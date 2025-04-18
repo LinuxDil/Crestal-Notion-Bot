@@ -165,10 +165,10 @@ async function reportActivity(type) {
 }
 
 async function getRandomMessage() {
-  const fileContent = await fs.readFile('NTE-Pesan.txt', 'utf8');
+  const fileContent = await fs.readFile('LinuxDil.txt', 'utf8');
   const messages = fileContent.split('\n').map(line => line.trim()).filter(line => line.length > 0);
   if (messages.length === 0) {
-    throw new Error("❌ NTE-Pesan.txt kosong atau tidak terformat dengan benar.");
+    throw new Error("❌ LinuxDil.txt kosong atau tidak terformat dengan benar.");
   }
   return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -227,7 +227,7 @@ async function startLoop(loopCount) {
     console.log(chalk.blueBright("============================================================"));
     const { access_token } = await performLogin();
     const spinnerPesan = ora("Memuat pesan...").start();
-    const fileContent = await fs.readFile('NTE-Pesan.txt', 'utf8');
+    const fileContent = await fs.readFile('LinuxDil.txt', 'utf8');
     const allMessages = fileContent.split('\n').map(line => line.trim()).filter(line => line.length > 0);
     spinnerPesan.succeed(chalk.greenBright(` Ditemukan ${allMessages.length} pesan.`));
 
